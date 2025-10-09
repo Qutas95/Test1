@@ -1,113 +1,162 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Kup kurs INF03</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kurs INF03 - Zaawansowane przygotowanie do egzaminu</title>
+<link rel="stylesheet" href="style.css" />
+
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1>Kurs INF03 — przygotowanie do egzaminu</h1>
-      <nav>
-        <button id="cartBtn" class="btn small">Koszyk (<span id="cartCount">0</span>)</button>
-      </nav>
+    <script src="script.js"></script>
+
+<header class="header">
+  <div class="container">
+    <h1 class="logo">Kurs INF03</h1>
+    <nav class="nav">
+      <ul>
+        <li><a href="#about">O kursie</a></li>
+        <li><a href="#program">Program</a></li>
+        <li><a href="#reviews">Opinie</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><button id="cartBtn" class="btn btn-outline">Koszyk (<span id="cartCount">0</span>)</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-text">
+      <h2>Przygotuj się do egzaminu INF03 profesjonalnie</h2>
+      <p>Kompleksowy kurs online z teorią, zadaniami i materiałami multimedialnymi.</p>
+      <button id="buyNowBtn" class="btn btn-primary btn-large">Kup teraz za 99 PLN</button>
     </div>
-  </header>
-
-  <main class="container">
-    <section class="product">
-      <div class="product-image">
-        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='250'><rect width='100%' height='100%' fill='%2386b7ff'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'>Kurs INF03</text></svg>" alt="Kurs INF03" />
-      </div>
-      <div class="product-info">
-        <h2>Kurs: INF03 — Kompleksowe przygotowanie</h2>
-        <p>Materiał obejmuje teorię, zadania z rozwiązaniami, przykładowe arkusze i testy. Dostęp natychmiastowy po opłaceniu.</p>
-        <ul>
-          <li>czas trwania: 20 godzin materiału</li>
-          <li>format: wideo + PDF + zadania</li>
-          <li>poziom: podstawowy → zaawansowany</li>
-        </ul>
-        <div class="price">Cena: <strong>99 PLN</strong></div>
-        <div class="actions">
-          <button id="buyBtn" class="btn primary">Kup teraz</button>
-          <button id="addToCart" class="btn">Dodaj do koszyka</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="how">
-      <h3>Jak to działa?</h3>
-      <ol>
-        <li>Dodaj kurs do koszyka lub kliknij "Kup teraz".</li>
-        <li>Wypełnij formularz zamówienia i potwierdź płatność (symulacja).</li>
-        <li>Po sukcesie otrzymasz link do pobrania i potwierdzenie e‑mailem (symulacja).</li>
-      </ol>
-    </section>
-  </main>
-
-  <!-- Koszyk / Modal -->
-  <div id="cartModal" class="modal" aria-hidden="true">
-    <div class="modal-content">
-      <button class="close" id="closeCart">&times;</button>
-      <h2>Twój koszyk</h2>
-      <div id="cartItems"></div>
-      <div class="cart-footer">
-        <div class="total">Suma: <strong id="cartTotal">0 PLN</strong></div>
-        <button id="checkoutBtn" class="btn primary">Przejdź do zamówienia</button>
-      </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Kurs INF03" />
     </div>
   </div>
+</section>
 
-  <!-- Formularz zamówienia -->
-  <div id="checkoutModal" class="modal" aria-hidden="true">
-    <div class="modal-content">
-      <button class="close" id="closeCheckout">&times;</button>
-      <h2>Formularz zamówienia</h2>
-      <form id="checkoutForm" novalidate>
-        <label>Imię i nazwisko
-          <input type="text" id="fullname" required minlength="2" />
-        </label>
-        <label>E‑mail
-          <input type="email" id="email" required />
-        </label>
-        <label>Adres (opcjonalnie)
-          <input type="text" id="address" />
-        </label>
+<main class="container">
+  <section id="about" class="section">
+    <h2>O kursie</h2>
+    <p>Kurs INF03 to 20 godzin materiału, wideo, PDF-y, testy i zadania z rozwiązaniami. Stworzony przez ekspertów, dostosowany do aktualnych wymagań egzaminacyjnych.</p>
+    <ul>
+      <li>Dostęp 24/7 przez 12 miesięcy</li>
+      <li>Materiały na wszystkich urządzeniach</li>
+      <li>Wsparcie online na forum i mail</li>
+    </ul>
+  </section>
 
-        <div class="payment-sim">
-          <p>Płatność (symulacja):</p>
-          <label><input type="radio" name="pay" value="card" checked /> Karta</label>
-          <label><input type="radio" name="pay" value="blik" /> BLIK</label>
-        </div>
+  <section id="program" class="section">
+    <h2>Program kursu</h2>
+    <ol>
+      <li>Wstęp do INF03 i wymagania egzaminacyjne</li>
+      <li>Podstawy systemów informatycznych</li>
+      <li>Algorytmy i struktury danych</li>
+      <li>Bazy danych i SQL</li>
+      <li>Programowanie w Pythonie</li>
+      <li>Sieci komputerowe</li>
+      <li>Bezpieczeństwo i prawo IT</li>
+      <li>Przygotowanie do egzaminów praktycznych i teoretycznych</li>
+    </ol>
+  </section>
 
-        <div class="form-actions">
-          <button type="submit" class="btn primary">Zapłać 99 PLN</button>
-        </div>
-        <div id="formMsg" class="form-msg" role="status"></div>
-      </form>
+  <section id="reviews" class="section reviews">
+    <h2>Opinie uczestników</h2>
+    <div class="review-list">
+      <blockquote class="review">
+        <p>“Kurs był świetnie przygotowany i łatwo przystępny. Polecam każdemu!”</p>
+        <cite>— Anna K.</cite>
+      </blockquote>
+      <blockquote class="review">
+        <p>“Dzięki materiałom zdałem egzamin z INF03 za pierwszym razem.”</p>
+        <cite>— Michał S.</cite>
+      </blockquote>
+      <blockquote class="review">
+        <p>“Materiały wideo i zadania pomogły mi utrwalić wiedzę.”</p>
+        <cite>— Kasia P.</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <section id="faq" class="section faq">
+    <h2>Najczęściej zadawane pytania</h2>
+    <details>
+      <summary>Jak długo trwa dostęp do kursu?</summary>
+      <p>Dostęp jest ważny przez 12 miesięcy od daty zakupu.</p>
+    </details>
+    <details>
+      <summary>Czy kurs zawiera materiały wideo?</summary>
+      <p>Tak, kurs zawiera kilkadziesiąt lekcji wideo wraz z materiałami PDF.</p>
+    </details>
+    <details>
+      <summary>Jak mogę skontaktować się z obsługą?</summary>
+      <p>Możesz wysłać e-mail na adres support@kursinf03.pl lub skorzystać z formularza kontaktowego.</p>
+    </details>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 Kurs INF03. Wszystkie prawa zastrzeżone.</p>
+  </div>
+</footer>
+
+<!-- Koszyk modal -->
+<div id="cartModal" class="modal" aria-hidden="true">
+  <div class="modal-content">
+    <button class="close" id="closeCart">&times;</button>
+    <h2>Twój koszyk</h2>
+    <div id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="total">Suma: <strong id="cartTotal">0 PLN</strong></div>
+      <button id="checkoutBtn" class="btn btn-primary">Przejdź do zamówienia</button>
     </div>
   </div>
+</div>
 
-  <!-- Potwierdzenie -->
-  <div id="successModal" class="modal" aria-hidden="true">
-    <div class="modal-content">
-      <h2>Dziękujemy za zakup!</h2>
-      <p id="successText">Płatność zakończona powodzeniem. Możesz pobrać kurs klikając poniżej:</p>
-      <a id="downloadLink" class="btn" download="Kurs-INF03.txt">Pobierz kurs (demo)</a>
-      <div style="margin-top:12px">
-        <button id="closeSuccess" class="btn">Zamknij</button>
+<!-- Checkout modal -->
+<div id="checkoutModal" class="modal" aria-hidden="true">
+  <div class="modal-content">
+    <button class="close" id="closeCheckout">&times;</button>
+    <h2>Formularz zamówienia</h2>
+    <form id="checkoutForm" novalidate>
+      <label>Imię i nazwisko
+        <input type="text" id="fullname" required minlength="2" />
+      </label>
+      <label>E-mail
+        <input type="email" id="email" required />
+      </label>
+      <label>Adres (opcjonalnie)
+        <input type="text" id="address" />
+      </label>
+      <div class="payment-sim">
+        <p>Płatność (symulacja):</p>
+        <label><input type="radio" name="pay" value="card" checked /> Karta</label>
+        <label><input type="radio" name="pay" value="blik" /> BLIK</label>
       </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Zapłać 99 PLN</button>
+      </div>
+      <div id="formMsg" class="form-msg" role="status"></div>
+    </form>
+  </div>
+</div>
+
+<!-- Success modal -->
+<div id="successModal" class="modal" aria-hidden="true">
+  <div class="modal-content">
+    <h2>Dziękujemy za zakup!</h2>
+    <p id="successText">Płatność zakończona powodzeniem. Możesz pobrać kurs klikając poniżej:</p>
+    <a id="downloadLink" class="btn btn-outline" download="Kurs-INF03.txt">Pobierz kurs (demo)</a>
+    <div style="margin-top:12px">
+      <button id="closeSuccess" class="btn btn-outline">Zamknij</button>
     </div>
   </div>
+</div>
 
-  <footer class="site-footer">
-    <div class="container">
-      <small>Demo sklepu — brak realnej obsługi płatności. W produkcji użyj Stripe/PayPal/Przelewy24.</small>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
