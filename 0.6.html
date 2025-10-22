@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>0.6 New note in Single page app diagram</title>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+</head>
+<body>
+  <h1>0.6 New note in Single page app diagram</h1>
+
+  <div class="mermaid">
+
+sequenceDiagram
+    participant browser
+    participant server
+
+    Note left of browser: User types a new note and clicks Save
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/notes
+    activate server
+    server-->>browser: 201 Created (new note JSON)
+    deactivate server
+
+    Note right of browser: Browser updates the notes list dynamically without reloading the page
+  </div>
+</body>
+</html>
