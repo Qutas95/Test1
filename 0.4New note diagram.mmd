@@ -1,0 +1,33 @@
+sequenceDiagram
+    participant browser as Przeglądarka
+    participant server as Serwer
+    
+
+    Note over browser: Użytkownik dodaje nowa notatke i klika  opcje "zapisz"
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    activate server
+    server-->>browser: HTML z lista notatek aktualnych
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    activate server
+    server-->>browser: dokument HTML strona glowna
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server-->>browser: Plik rozszezenie CSS
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate server
+    server-->>browser: Plik roszezenie JavaScript
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server-->>browser: JSON z listą notatek
+    deactivate server
+
+    Note over browser: Przeglądarka renderuje  cala liste notatek jeszcze raz
