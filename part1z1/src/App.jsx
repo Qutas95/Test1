@@ -14,7 +14,7 @@ const Part = ({ part }) => {
   )
 }
 
-// Komponent Content renderuje wszystkie części kursu przekazane jako tablica
+// Komponent Content renderuje wszystkie części kursu z tablicy parts
 const Content = ({ parts }) => {
   return (
     <div>
@@ -25,7 +25,7 @@ const Content = ({ parts }) => {
   )
 }
 
-// Komponent Total oblicza i wyświetla sumę wszystkich ćwiczeń
+// Komponent Total oblicza i wyświetla sumę wszystkich ćwiczeń z tablicy parts
 const Total = ({ parts }) => {
   const total = parts.reduce((sum, part) => sum + part.exercises, 0)
   return (
@@ -37,33 +37,27 @@ const Total = ({ parts }) => {
 
 // Główny komponent aplikacji
 const App = () => {
-  // course jako obiekt zawierający nazwę kursu i tablicę części
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7
-      },
-      {
-        name: 'State of a component',
-        exercises: 14
-      }
-    ]
-  }
+  const course = 'Half Stack application development'
+  const parts = [
+    {
+      name: 'Fundamentals of React',
+      exercises: 10
+    },
+    {
+      name: 'Using props to pass data',
+      exercises: 7
+    },
+    {
+      name: 'State of a component',
+      exercises: 14
+    }
+  ]
 
-  // Przekazanie nazwy kursu i tablicy części do podkomponentów
   return (
     <div>
-      <Header course={course.name} />
-
-      <Content parts={course.parts} />
-
-      <Total parts={course.parts} />
+      <Header course={course} />
+      <Content parts={parts} />
+      <Total parts={parts} />
     </div>
   )
 }
