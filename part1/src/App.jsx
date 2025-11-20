@@ -1,59 +1,65 @@
-//komponent header przyjmuje wartosc course
+// Komponent header ktory przyjmuje obiekt course jako props i wyswietla jego nazwe
 const Header = (props) => {
-  return <h1>{props.course}</h1>;
+  return <h1>{props.course.name}</h1>;
 };
-//komponent part przyjmuje wartosci part i exercises
+
+// Komponent part pojedynczej części kursu
 const Part = (props) => {
   return (
     <p>
-      {props.part} {props.exercises}
+      {props.part.name} {props.part.exercises}
     </p>
   );
 };
-//komponent content przyjmuje tablice parts i przekazuje odpowiednie wartosci do komponentu part
+
+// Komponent content – renderuje wszystkie części z obiektu course.parts
 const Content = (props) => {
   return (
     <div>
-      <Part part={props.parts[0].name} exercises={props.parts[0].exercises} />
-      <Part part={props.parts[1].name} exercises={props.parts[1].exercises} />
-      <Part part={props.parts[2].name} exercises={props.parts[2].exercises} />
+      <Part part={props.course.parts[0]} />
+      <Part part={props.course.parts[1]} />
+      <Part part={props.course.parts[2]} />
     </div>
   );
 };
-//komponent total przyjmuje tablice parts i sumuje wartosci exercises
+
+// Komponent total dodaje liczbę ćwiczeń
 const Total = (props) => {
   return (
     <p>
       Number of exercises{" "}
-      {props.parts[0].exercises +
-        props.parts[1].exercises +
-        props.parts[2].exercises}
+      {props.course.parts[0].exercises +
+        props.course.parts[1].exercises +
+        props.course.parts[2].exercises}
     </p>
   );
 };
-//glowny komponent app zawierajacy nazwe kursu i tablice parts
+
+// Główny komponent aplikacji zawierajacy mazwe kursu i tablice z czesciami
 const App = () => {
-  const course = 'Half Stack application development'
-  const parts = [
-    {
-      name: 'Fundamentals of React',
-      exercises: 10
-    },
-    {
-      name: 'Using props to pass data',
-      exercises: 7
-    },
-    {
-      name: 'State of a component',
-      exercises: 14
-    }
-  ]
-//renderuje komponenty Header, Content i Total przekazujac im odpowiednie propsy
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
+//renderuje Header, Content i Total przekazujac im obiekt course jako props
   return (
     <div>
       <Header course={course} />
-      <Content parts={parts} />
-      <Total parts={parts} />
+      <Content course={course} />
+      <Total course={course} />
     </div>
   )
 }
