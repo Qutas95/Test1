@@ -1,67 +1,55 @@
-// Komponent header ktory przyjmuje obiekt course jako props i wyswietla jego nazwe
-const Header = (props) => {
-  return <h1>{props.course.name}</h1>;
-};
+import { useState } from 'react'
 
-// Komponent part pojedynczej części kursu
-const Part = (props) => {
+const Display = (props) => {
   return (
-    <p>
-      {props.part.name} {props.part.exercises}
-    </p>
-  );
-};
+    <div>{props.counter}</div>
+  )
+}
 
-// Komponent content – renderuje wszystkie części z obiektu course.parts
-const Content = (props) => {
-  return (
-    <div>
-      <Part part={props.course.parts[0]} />
-      <Part part={props.course.parts[1]} />
-      <Part part={props.course.parts[2]} />
-    </div>
-  );
-};
 
-// Komponent total dodaje liczbę ćwiczeń
-const Total = (props) => {
-  return (
-    <p>
-      Number of exercises{" "}
-      {props.course.parts[0].exercises +
-        props.course.parts[1].exercises +
-        props.course.parts[2].exercises}
-    </p>
-  );
-};
-
-// Główny komponent aplikacji zawierajacy mazwe kursu i tablice z czesciami
-const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7
-      },
-      {
-        name: 'State of a component',
-        exercises: 14
-      }
-    ]
+const History = (props) => {
+  if (props.allClicks.length === 0) {
+    return (
+      <div>
+        the app is used by pressing the buttons
+      </div>
+    )
   }
-//renderuje Header, Content i Total przekazujac im obiekt course jako props
+
   return (
     <div>
-      <Header course={course} />
-      <Content course={course} />
-      <Total course={course} />
+      button press history: {props.allClicks.join(' ')}
     </div>
   )
 }
 
-export default App;
+
+const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>
+
+const App = () => {
+  const [left, setLeft] = useState(0)
+  const [right, setRight] = useState(0)
+  const [allClicks, setAll] = useState([])
+
+  const handleLeftClick = () => {
+    setAll(allClicks.concat('L'))
+    setLeft(left + 1)
+  }
+
+  const handleRightClick = () => {
+    setAll(allClicks.concat('R'))
+    setRight(right + 1)
+  }
+
+  return (
+    <div>
+      {left}
+
+      <Button onClick={handleLeftClick} text='left' />
+      <Button onClick={handleRightClick} text='right' />
+      {right}
+      <History allClicks={allClicks} />
+    </div>
+  )
+}
+export default App
