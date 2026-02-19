@@ -1,22 +1,27 @@
-const Header = ({ course }) => {
-  return <h1>{course}</h1>
-}
+import React from 'react'
 
-const Part = ({ part }) => {
-  return (
-    <p>
-      {part.name} {part.exercises}
-    </p>
-  )
-}
+const Header = ({ course }) => <h1>{course}</h1>
 
-const Content = ({ parts }) => {
+const Part = ({ part }) => (
+  <p>
+    {part.name} {part.exercises}
+  </p>
+)
+
+const Content = ({ parts }) => (
+  <div>
+    {parts.map(part => 
+      <Part key={part.id} part={part} />
+    )}
+  </div>
+)
+
+// Nowy komponent Total wykorzystujący metodę reduce
+const Total = ({ parts }) => {
+  const sum = parts.reduce((s, p) => s + p.exercises, 0)
+  
   return (
-    <div>
-      {parts.map(part => 
-        <Part key={part.id} part={part} />
-      )}
-    </div>
+    <p><b>total of {sum} exercises</b></p>
   )
 }
 
@@ -25,6 +30,7 @@ const Course = ({ course }) => {
     <div>
       <Header course={course.name} />
       <Content parts={course.parts} />
+      <Total parts={course.parts} />
     </div>
   )
 }
