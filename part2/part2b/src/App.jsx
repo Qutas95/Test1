@@ -11,19 +11,27 @@ const App = () => {
     setNewName(event.target.value)
   }
 
-  //Funkcja obsługująca wysłanie formularza
-  const addPerson = (event) => {
-    event.preventDefault() //Zapobiega przeładowaniu strony
-    
-    const personObject = {
-      name: newName
-    }
+const addPerson = (event) => {
+  event.preventDefault()
 
-    //Dodawanie nowej osoby do tablicy (tworząc nową tablicę)
-    setPersons(persons.concat(personObject))
-    //Czyszczenie pola input po dodaniu
-    setNewName('')
+  //Sprawdzamy, czy imię już istnieje w tablicy persons
+  // Metoda .some() zwraca true, jeśli przynajmniej jeden element spełnia warunek
+  const nameExists = persons.some(person => person.name === newName)
+
+  if (nameExists) {
+    //Jeśli imię istnieje, wyświetlamy alert z użyciem template string
+    alert(`${newName} is already added to phonebook`)
+    return // Przerywamy funkcję, żeby nie dodać duplikatu
   }
+
+  //Jeśli imię jest nowe, dodajemy je tak jak wcześniej
+  const personObject = {
+    name: newName
+  }
+
+  setPersons(persons.concat(personObject))
+  setNewName('')
+}
 
   return (
     <div>
