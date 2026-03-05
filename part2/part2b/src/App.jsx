@@ -2,36 +2,41 @@ import { useState } from 'react'
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: 'Arto Hellas' }
+    { name: 'Arto Hellas', number: '040-1234567' }
   ]) 
   const [newName, setNewName] = useState('')
+  //Stan dla nowego numeru telefonu 
+  const [newNumber, setNewNumber] = useState('')
 
-  //Funkcja obsługująca zmianę w polu input
   const handleNameChange = (event) => {
     setNewName(event.target.value)
   }
 
-const addPerson = (event) => {
-  event.preventDefault()
-
-  //Sprawdzamy, czy imię już istnieje w tablicy persons
-  // Metoda .some() zwraca true, jeśli przynajmniej jeden element spełnia warunek
-  const nameExists = persons.some(person => person.name === newName)
-
-  if (nameExists) {
-    //Jeśli imię istnieje, wyświetlamy alert z użyciem template string
-    alert(`${newName} is already added to phonebook`)
-    return // Przerywamy funkcję, żeby nie dodać duplikatu
+  //Obsługa zmiany numeru 
+  const handleNumberChange = (event) => {
+    setNewNumber(event.target.value)
   }
 
-  //Jeśli imię jest nowe, dodajemy je tak jak wcześniej
-  const personObject = {
-    name: newName
-  }
+  const addPerson = (event) => {
+    event.preventDefault()
 
-  setPersons(persons.concat(personObject))
-  setNewName('')
-}
+    const nameExists = persons.some(person => person.name === newName)
+
+    if (nameExists) {
+      //Wykorzystanie template string zgodnie z instrukcją
+      alert(`${newName} is already added to phonebook`)
+      return
+    }
+
+    const personObject = {
+      name: newName,
+      number: newNumber //Dodanie numeru do obiektu (Zadanie 2.8)
+    }
+
+    setPersons(persons.concat(personObject))
+    setNewName('')
+    setNewNumber('') //Czyszczenie pola numeru
+  }
 
   return (
     <div>
@@ -40,6 +45,10 @@ const addPerson = (event) => {
         <div>
           name: <input value={newName} onChange={handleNameChange} />
         </div>
+        
+        <div>
+          number: <input value={newNumber} onChange={handleNumberChange} />
+        </div>
         <div>
           <button type="submit">add</button>
         </div>
@@ -47,8 +56,9 @@ const addPerson = (event) => {
       
       <h2>Numbers</h2>
       <ul>
+        {/* Wyświetlanie imion wraz z numerami */}
         {persons.map(person => 
-          <li key={person.name}>{person.name}</li>
+          <li key={person.name}>{person.name} {person.number}</li>
         )}
       </ul>
     </div>
